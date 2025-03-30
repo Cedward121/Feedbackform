@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Employee Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .container {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        h2 {
+            text-align: center;
+            color: #007bff;
+        }
+        p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .label {
+            font-weight: bold;
+            color: #333;
+        }
+        .value {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Employee Feedback Response</h2>
+
+    <p><span class="label">Employee Name:</span> <span class="value">{{ feedback.Employee_name }}</span></p>
+    <p><span class="label">Employee Email:</span> <span class="value">{{ feedback.Employee_email }}</span></p>
+    <p><span class="label">Department:</span> <span class="value">{{ feedback.Department }}</span></p>
+    
+    <hr>
+
+    <h3>Performance Ratings</h3>
+    <p><span class="label">Knowledge of Position:</span> <span class="value">{{ feedback.Knowledge_of_Position }}</span></p>
+    <p><span class="label">Quality of Work:</span> <span class="value">{{ feedback.Quality_of_Work }}</span></p>
+    <p><span class="label">Timely Completion of Tasks:</span> <span class="value">{{ feedback.Timely_Completion_of_Tasks }}</span></p>
+    <p><span class="label">Attendance and Punctuality:</span> <span class="value">{{ feedback.Attendance_and_Punctuality }}</span></p>
+    <p><span class="label">Communication Skills:</span> <span class="value">{{ feedback.Communication_Skills }}</span></p>
+    <p><span class="label">Accountability and Ownership:</span> <span class="value">{{ feedback.Accountability_and_Ownership }}</span></p>
+    <p><span class="label">Team Collaboration and Coordination:</span> <span class="value">{{ feedback.Team_Collaboration_and_Coordination }}</span></p>
+    <p><span class="label">Problem Solving and Decision Making:</span> <span class="value">{{ feedback.Problem_Solving_and_Decision_Making }}</span></p>
+    <p><span class="label">Work Consistency and Proactiveness:</span> <span class="value">{{ feedback.Work_Consistency_and_Proactiveness }}</span></p>
+    <p><span class="label">Ability to Handle Pressure/Deadlines:</span> <span class="value">{{ feedback.Ability_to_Handle_Pressure_Deadlines }}</span></p>
+
+    <hr>
+
+    <h3>Additional Feedback</h3>
+    <p><span class="label">Strengths Observed:</span> <span class="value">{{ feedback.strengths_observed }}</span></p>
+    <p><span class="label">Areas of Improvement:</span> <span class="value">{{ feedback.areas_of_improvement }}</span></p>
+    <p><span class="label">Overall Performance Rating:</span> <span class="value">{{ feedback.overall_performance }}</span></p>
+    <p><span class="label">Total Rating (Average):</span> <span class="value">{{ feedback.average_rating }}</span></p>
+
+    <hr>
+    <p style="text-align: center;">Thank you for your feedback!</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Monthly Feedback</title>
+</head>
+<body>
+    <h2>Employee Monthly Feedback</h2>
+    
+    <form method="GET">
+        <label for="employee_name">Select Employee:</label>
+        <select name="employee_name">
+            <option value="">All Employees</option>
+            {% for employee in employees %}
+                <option value="{{ employee }}" {% if employee == selected_employee %}selected{% endif %}>{{ employee }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="month_year">Select Month:</label>
+        <input type="month" name="month_year" value="{{ selected_month }}">
+
+        <button type="submit">Filter</button>
+    </form>
+
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Performance</th>
+            <th>Average Rating</th>
+            <th>Month</th>
+        </tr>
+        {% for feedback in feedbacks %}
+        <tr>
+            <td>{{ feedback.Employee_name }}</td>
+            <td>{{ feedback.Department }}</td>
+            <td>{{ feedback.overall_performance }}</td>
+            <td>{{ feedback.average_rating }}</td>
+            <td>{{ feedback.month_year }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No feedback found for the selected criteria.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

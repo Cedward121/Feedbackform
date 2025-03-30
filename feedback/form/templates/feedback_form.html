@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Employee Performance Feedback</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .feedback-form {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-label {
+            font-weight: 600;
+        }
+        .btn-submit {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="feedback-form">
+        <h2 class="text-center mb-4">Employee Performance Feedback</h2>
+        
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label">Employee Name:</label>
+                {{ form.Employee_name }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Employee Email:</label>
+                {{ form.Employee_email }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Department:</label>
+                {{ form.Department }}
+            </div>
+
+            <hr>
+
+            <h5 class="text-primary">Performance Criteria</h5>
+
+            <div class="mb-3">
+                <label class="form-label">Knowledge of Position:</label>
+                {{ form.Knowledge_of_Position }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Quality of Work:</label>
+                {{ form.Quality_of_Work }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Timely Completion of Tasks:</label>
+                {{ form.Timely_Completion_of_Tasks }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Attendance and Punctuality:</label>
+                {{ form.Attendance_and_Punctuality }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Communication Skills:</label>
+                {{ form.Communication_Skills }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Accountability and Ownership:</label>
+                {{ form.Accountability_and_Ownership }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Team Collaboration and Coordination:</label>
+                {{ form.Team_Collaboration_and_Coordination }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Problem Solving and Decision Making:</label>
+                {{ form.Problem_Solving_and_Decision_Making }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Work Consistency and Proactiveness:</label>
+                {{ form.Work_Consistency_and_Proactiveness }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Ability to Handle Pressure/Deadlines:</label>
+                {{ form.Ability_to_Handle_Pressure_Deadlines }}
+            </div>
+
+            <hr>
+
+            <h5 class="text-primary">Additional Feedback</h5>
+
+            <div class="mb-3">
+                <label class="form-label">Strengths Observed:</label>
+                {{ form.strengths_observed }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Areas of Improvement:</label>
+                {{ form.areas_of_improvement }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Overall Performance Rating:</label>
+                {{ form.overall_performance }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Total Rating:</label>
+                {{ form.average_rating }}
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-submit px-4 py-2">Submit Feedback</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+
