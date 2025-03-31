@@ -2,6 +2,11 @@ from django import forms
 from .models import EmployeeFeedback
 
 class EmployeeFeedbackForm(forms.ModelForm):
+    feedback_month = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'month', 'class': 'form-control'}),
+        label="Feedback Month"
+    )
+    
     average_rating = forms.FloatField(
         required=False,  # Not required because it's calculated dynamically
         widget=forms.TextInput(attrs={'readonly': 'readonly'})  # Make it read-only
@@ -15,11 +20,15 @@ class EmployeeFeedbackForm(forms.ModelForm):
             'Communication_Skills', 'Accountability_and_Ownership', 'Team_Collaboration_and_Coordination',
             'Problem_Solving_and_Decision_Making', 'Work_Consistency_and_Proactiveness',
             'Ability_to_Handle_Pressure_Deadlines', 'overall_performance', 'strengths_observed',
-            'areas_of_improvement', 'average_rating'  
+            'areas_of_improvement', 'feedback_month', 'average_rating'  
         ]
 
     def clean(self):
         cleaned_data = super().clean()
+
+        # Validate feedback month
+        if not cleaned_data.get('feedback_month'):
+            self.add_error('feedback_month', "Please select a feedback month.")
 
         # Get all rating fields
         ratings = [

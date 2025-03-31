@@ -1,8 +1,7 @@
 from django.db import models
 
 class EmployeeFeedback(models.Model):
-    EMPLOYEE_RATINGS = [(i, str(i)) for i in range(1, 6)]  # 1-5 rating scale
-
+    EMPLOYEE_RATINGS = [(i, str(i)) for i in range(1, 6)]  
     PERFORMANCE_CHOICES = [
         ('Needs Improvement', 'Needs Improvement'),
         ('Satisfactory', 'Satisfactory'),
@@ -14,6 +13,8 @@ class EmployeeFeedback(models.Model):
     Employee_name = models.CharField(max_length=255)
     Employee_email = models.EmailField(max_length=255, blank=True, null=True)
     Department = models.CharField(max_length=100)
+    feedback_month = models.DateField()  
+
     Knowledge_of_Position = models.IntegerField(choices=EMPLOYEE_RATINGS)
     Quality_of_Work = models.IntegerField(choices=EMPLOYEE_RATINGS)
     Timely_Completion_of_Tasks = models.IntegerField(choices=EMPLOYEE_RATINGS)
@@ -27,8 +28,10 @@ class EmployeeFeedback(models.Model):
 
     strengths_observed = models.TextField(blank=True, null=True)
     areas_of_improvement = models.TextField(blank=True, null=True)
-
     overall_performance = models.CharField(max_length=20, choices=PERFORMANCE_CHOICES, default='Satisfactory')
+
+    class Meta:
+        unique_together = ('Employee_email', 'feedback_month')  # Ensure monthly uniqueness
 
     def average_rating(self):
         """Calculate the average of all rating fields."""
@@ -47,4 +50,4 @@ class EmployeeFeedback(models.Model):
         return round(sum(rating_fields) / len(rating_fields), 2)
 
     def __str__(self):
-        return f"{self.employee_name} - {self.performance_rating} ({self.date_of_feedback})"
+        return f"{self.Employee_name} - {self.overall_performance} ({self.feedback_month})"
